@@ -1,6 +1,6 @@
 # WEEK 1 CODE CHALLENGE
 
-## Installation
+## Installation / Project Setup
 In order to get user input using Node.js, it's necessary to use "prompt-sync".
 prompt-sync module is a function that creates prompting functions, so we call it in order to get the actual prompting function
 
@@ -33,7 +33,8 @@ https://www.aren.co.ke/payroll/taxrates.htm Links to an external site.
 https://www.kra.go.ke/en/individual/calculate-tax/calculating-tax/paye
 
 ## Author & License
-### Author: Rodgers Ogada
+Author: Rodgers Ogada
 
 ### License
-
+[License: ICL](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+[License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
