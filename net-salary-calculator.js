@@ -1,4 +1,4 @@
-onst prompt = require('prompt-sync')();
+const prompt = require('prompt-sync')();
 
 let grossSalary = prompt('What is your monthly gross salary? ');
 console.log(`The gross sallary inputted is: ${grossSalary}.`);
