@@ -1,4 +1,4 @@
-const prompt = require('prompt-sync')();
+onst prompt = require('prompt-sync')();
 
 let grossSalary = prompt('What is your monthly gross salary? ');
 console.log(`The gross sallary inputted is: ${grossSalary}.`);
@@ -61,18 +61,47 @@ function NSSFDeductions(grossSalary) {
 let NSSF = NSSFDeductions(grossSalary);
 console.log(`NSSF deducted from your income at a rate of 6%: ${NSSF}.`);
 
+// Calculating total insurance relief. 
+
+let insurancePremium = prompt('What is your monthly insurance premium? ');
+console.log(`The insurance premium inputted is: ${insurancePremium}.`);
+
+//let insurancePremium = 1000;
+//let NHIF = 300;
+let insurance = parseInt(insurancePremium) + NHIF
+
+function insuranceReliefCalculation (insurance) {
+    //insurance = insurancePremium + NHIF
+
+    if (insurance >= 0 && insurance < (100000 / 3)) {
+        return insurance * 0.15;
+    
+    } else if (insurance >= (100000 / 3)) {
+        return 5000;
+    } 
+    // else {
+    //     return 0;
+    // }
+}
+
+let insuranceRelief = insuranceReliefCalculation(insurance);
+console.log(`Your insurance relief: ${insuranceRelief}`);
+
 // Taxable income calculations
 let taxableIncome = grossSalary - (NHIF + NSSF);
 console.log(`Taxable income subject to PAYE calculations: ${taxableIncome}.`);
 
 // PAYE calculations
+
 function paye(taxableIncome) {
+    let personalTaxRelief = 2400;
     if (taxableIncome <= 24000) {
         return 0
     } else if (taxableIncome >= 24001 && taxableIncome <= 32333) {
-        return (taxableIncome * 0.25) - personalTaxRelief;
+        return ((24000 * 0.10) + ((taxableIncome-24000) * 0.25) - (personalTaxRelief + insuranceRelief));
     } else {
-        return (taxableIncome * 0.30) - personalTaxRelief;
+        return (((24000 * 0.10) + (8333 *0.25) + ((taxableIncome - 32333) * 0.30)) - (personalTaxRelief + insuranceRelief))
+        
     }
 }
 let PAYE = paye(taxableIncome)
