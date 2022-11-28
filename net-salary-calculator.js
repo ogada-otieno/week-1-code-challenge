@@ -87,12 +87,27 @@ function insuranceReliefCalculation (insurance) {
 let insuranceRelief = insuranceReliefCalculation(insurance);
 console.log(`Your insurance relief: ${insuranceRelief}`);
 
+// Function to compute allowable pension
+//  Scenario: If monthly gross income is KES 80,000, and actual contribution to a registered RBS of KES 15,000, taxable pay is KES 65,000.
+let pensionDeductible = prompt('How much do you pay as pension? ');
+console.log(`The pension inputted is: ${pensionDeductible}.`);
+
+function allowablePensionFund(pensionDeductible) {
+    if (pensionDeductible <= 20000) {
+        return pensionDeductible;
+    } else {
+        return 20000
+    }
+}
+ let pension = allowablePensionFund(pensionDeductible)
+console.log(`Your allowable pension fund is: ${pension}.`);
+
+
 // Taxable income calculations
-let taxableIncome = grossSalary - (NHIF + NSSF);
+let taxableIncome = grossSalary - (NHIF + NSSF + parseInt(pension));
 console.log(`Taxable income subject to PAYE calculations: ${taxableIncome}.`);
 
 // PAYE calculations
-
 function paye(taxableIncome) {
     let personalTaxRelief = 2400;
     if (taxableIncome <= 24000) {
@@ -113,4 +128,3 @@ function netSalary(grossSalary) {
 }
 let netIncome = netSalary(grossSalary);
 console.log(`Your net salary: ${netIncome}.`);
-
